@@ -40,8 +40,3 @@ sh -c "$(wget -O- https://raw.githubusercontent.com/tankibaj/dotfiles-ubuntu/mas
 ```bash
 source $HOME/.zshrc
 ```
-
-
-```bash
-source $HOME/.zshrc
-```
