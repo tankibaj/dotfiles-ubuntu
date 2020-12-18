@@ -43,3 +43,14 @@ alias nginxError='sudo tail -n 100 /var/log/nginx/error.log'
 alias nginxAccess='sudo tail -n 100 /var/log/nginx/access.log'
 alias site-available='cd /etc/nginx/sites-available/'
 alias site-enabled='cd /etc/nginx/sites-enabled/'
+
+
+# Virsh
+alias vlist='sudo virsh list --all'
+alias vinfo='sudo virsh dominfo'
+alias vshutdown='sudo virsh shutdown'
+alias vstart='sudo virsh start'
+alias vautostart='sudo virsh autostart'
+alias vreboot='sudo virsh reboot'
+alias vreset='sudo virsh reset'
+alias vslist='sudo virsh snapshot-list'
