@@ -54,3 +54,31 @@ alias vautostart='sudo virsh autostart'
 alias vreboot='sudo virsh reboot'
 alias vreset='sudo virsh reset'
 alias vslist='sudo virsh snapshot-list'
+vDelete() {
+  if [ -z $1 ]; then
+    echo "VM name required!!" && exit 1
+  fi
+  sudo virsh shutdown $1
+  sudo virsh destroy $1
+  sudo virsh undefine $1
+  sudo virsh pool-destroy $1
+  sudo rm -rf /var/lib/libvirt/images/$1.qcow2
+}
+vCreateScreenshot() {
+  if [ -z $1 ]; then
+    echo "VM name required!!" && exit 1
+  fi
+  if [ -z $2 ]; then
+    echo "Screenshot name required!!" && exit 2
+  fi
+  sudo virsh snapshot-create-as --domain $1 --name $2 --description $2
+}
+vRevertScreenshot() {
+  if [ -z $1 ]; then
+    echo "VM name required!!" && exit 1
+  fi
+  if [ -z $2 ]; then
+    echo "Screenshot name required!!" && exit 2
+  fi
+  sudo virsh snapshot-revert --domain $1 --snapshotname $2 --running
+}
