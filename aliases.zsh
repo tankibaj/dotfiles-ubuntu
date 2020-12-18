@@ -82,3 +82,12 @@ vRevertScreenshot() {
   fi
   sudo virsh snapshot-revert --domain $1 --snapshotname $2 --running
 }
+vDeleteScreenshot() {
+  if [ -z $1 ]; then
+    echo "VM name required!!" && exit 1
+  fi
+  if [ -z $2 ]; then
+    echo "Screenshot name required!!" && exit 2
+  fi
+  sudo virsh snapshot-delete --domain $1 --snapshotname $2
+}
