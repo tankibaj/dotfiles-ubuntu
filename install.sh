@@ -9,7 +9,7 @@ plain='\033[0m'
 echo
 echo
 echo
-echo -e "${green}Setting up Ubuntu${plain}"
+echo "${green}Setting up Ubuntu${plain}"
 
 # Sudo without password
 sudo sh -c "echo 'naim ALL=(ALL) NOPASSWD:ALL' >>/etc/sudoers"
@@ -67,4 +67,4 @@ source $HOME/.zshrc
 echo
 echo
 echo
-echo -e "${green}Setup has been completed!!! Please restart your terminal${plain}"
+echo "${green}Setup has been completed!!! Please restart your terminal${plain}"
