@@ -7,6 +7,8 @@ alias mycity='curl https://ifconfig.co/city'
 alias myip='curl https://ifconfig.co'
 alias myip2="curl https://ipecho.net/plain"
 alias whoIsMe="curl -s "http://ifconfig.co/json" | jq -r '.'"
+alias size="sudo du --summarize --human-readable"
+alias ports ="netstat -tupln"
 
 # Path
 alias home="cd ~"
