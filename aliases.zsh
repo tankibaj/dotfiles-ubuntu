@@ -66,28 +66,28 @@ vDelete() {
 }
 vCreateScreenshot() {
   if [ -z $1 ]; then
-    echo "VM name required!!" && exit 1
+    echo "VM name required!!"
   fi
   if [ -z $2 ]; then
-    echo "Screenshot name required!!" && exit 2
+    echo "Screenshot name required!!"
   fi
   sudo virsh snapshot-create-as --domain $1 --name $2 --description $2
 }
 vRevertScreenshot() {
   if [ -z $1 ]; then
-    echo "VM name required!!" && exit 1
+    echo "VM name required!!"
   fi
   if [ -z $2 ]; then
-    echo "Screenshot name required!!" && exit 2
+    echo "Screenshot name required!!"
   fi
   sudo virsh snapshot-revert --domain $1 --snapshotname $2 --running
 }
 vDeleteScreenshot() {
   if [ -z $1 ]; then
-    echo "VM name required!!" && exit 1
+    echo "VM name required!!"
   fi
   if [ -z $2 ]; then
-    echo "Screenshot name required!!" && exit 2
+    echo "Screenshot name required!!"
   fi
   sudo virsh snapshot-delete --domain $1 --snapshotname $2
 }
