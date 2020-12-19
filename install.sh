@@ -5,6 +5,12 @@ echo "Setting up Ubuntu"
 # Remove .dotfiles directory if exist
 rm -rf $HOME/.dotfiles
 
+# Locale
+rm -f /etc/default/locale
+locale-gen "en_US.UTF-8"
+update-locale LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8
+source /etc/default/locale
+
 # Install Apps
 sudo apt install -y zsh curl git jq zip
 
