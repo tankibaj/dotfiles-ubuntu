@@ -11,6 +11,9 @@ locale-gen "en_US.UTF-8"
 update-locale LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8
 source /etc/default/locale
 
+# Sudo without password
+echo 'naim ALL=(ALL) NOPASSWD:ALL' >>/etc/sudoers
+
 # Install Apps
 apt install -y zsh curl git jq zip
 
