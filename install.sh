@@ -52,4 +52,4 @@ ln -s $HOME/.dotfiles/.zshrc $HOME/.zshrc
 
 # Load new .zshrc
 source $HOME/.zshrc
-source /etc/default/locale
+#source /etc/default/locale
