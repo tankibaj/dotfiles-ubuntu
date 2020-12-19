@@ -58,7 +58,7 @@ alias vreset='sudo virsh reset'
 alias vslist='sudo virsh snapshot-list'
 vDelete() {
   if [ -z $1 ]; then
-    echo "VM name required!!" && exit 1
+    echo "VM name required!!"
   fi
   sudo virsh shutdown $1
   sudo virsh destroy $1
