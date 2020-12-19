@@ -12,15 +12,15 @@ update-locale LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8
 source /etc/default/locale
 
 # Install Apps
-sudo apt install -y zsh curl git jq zip
+apt install -y zsh curl git jq zip
 
 # SpeedTest
 wget https://raw.githubusercontent.com/tankibaj/speedtest/master/speedtest
-sudo chmod +x speedtest
-sudo mv speedtest /usr/bin/speedtest
+chmod +x speedtest
+mv speedtest /usr/bin/speedtest
 
 # ZSH
-sudo usermod -s /usr/bin/zsh $(whoami)
+usermod -s /usr/bin/zsh $(whoami)
 
 # Clone Dotfiles
 DOTFILES=$HOME/.dotfiles
