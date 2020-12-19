@@ -9,7 +9,6 @@ rm -rf $HOME/.dotfiles
 rm -f /etc/default/locale
 locale-gen "en_US.UTF-8"
 update-locale LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8
-source /etc/default/locale
 
 # Sudo without password
 echo 'naim ALL=(ALL) NOPASSWD:ALL' >>/etc/sudoers
@@ -53,3 +52,4 @@ ln -s $HOME/.dotfiles/.zshrc $HOME/.zshrc
 
 # Load new .zshrc
 source $HOME/.zshrc
+source /etc/default/locale
