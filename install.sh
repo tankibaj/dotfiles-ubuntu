@@ -4,6 +4,7 @@ echo "Setting up Ubuntu"
 
 # Remove .dotfiles directory if exist
 rm -rf $HOME/.dotfiles
+rm -rf $HOME/.oh-my-zsh
 
 # Locale
 rm -f /etc/default/locale
