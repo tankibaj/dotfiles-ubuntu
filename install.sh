@@ -2,30 +2,28 @@
 
 echo "Setting up Ubuntu"
 
-# Remove .dotfiles directory if exist
-rm -rf $HOME/.dotfiles
-rm -rf $HOME/.oh-my-zsh
-rm -f $HOME/.zshrc
+# Sudo without password
+sudo sh -c "echo 'naim ALL=(ALL) NOPASSWD:ALL' >>/etc/sudoers"
 
 # Locale
-rm -f /etc/default/locale
-locale-gen "en_US.UTF-8"
-update-locale LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8
+sudo rm -f /etc/default/locale && \
+sudo locale-gen "en_US.UTF-8" && \
+sudo update-locale LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 && \
 source /etc/default/locale
 
-# Sudo without password
-echo 'naim ALL=(ALL) NOPASSWD:ALL' >>/etc/sudoers
+# Remove .dotfiles directory if exist
+sudo rm -rf $HOME/.dotfiles
 
 # Install Apps
-apt install -y zsh curl git jq zip
+sudo apt install -y zsh curl git jq zip
 
 # SpeedTest
 wget https://raw.githubusercontent.com/tankibaj/speedtest/master/speedtest
-chmod +x speedtest
-mv speedtest /usr/bin/speedtest
+sudo chmod +x speedtest
+sudo mv speedtest /usr/bin/speedtest
 
 # ZSH
-usermod -s /usr/bin/zsh $(whoami)
+sudo usermod -s /usr/bin/zsh $(whoami)
 
 # Clone Dotfiles
 DOTFILES=$HOME/.dotfiles
@@ -37,12 +35,12 @@ cp $HOME/.bashrc $HOME/.bashrc.original
 
 # Install Oh My Zsh
 ZSH=$HOME/.oh-my-zsh
-rm -rf $ZSH
+sudo rm -rf $ZSH
 #sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 git clone https://github.com/ohmyzsh/ohmyzsh.git $ZSH
 
 #### Install PowerLeve10K theme
-rm -f $HOME/.p10k.zsh
+sudo rm -f $HOME/.p10k.zsh
 git clone https://github.com/romkatv/powerlevel10k.git $ZSH/themes/powerlevel10k
 
 #### Download PowerLeve10K Plugins for autosuggestion and syntax highlighting:
@@ -50,7 +48,7 @@ git clone https://github.com/zsh-users/zsh-autosuggestions.git $ZSH/plugins/zsh-
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH/plugins/zsh-syntax-highlighting
 
 # Removes .zshrc from $HOME (if it exists) and symlinks the .zshrc file from the .dotfiles
-rm $HOME/.zshrc
+sudo rm $HOME/.zshrc
 ln -s $HOME/.dotfiles/.zshrc $HOME/.zshrc
 
 # Load new .zshrc
