@@ -24,7 +24,10 @@ source /etc/default/locale
 sudo rm -rf $HOME/.dotfiles
 
 # Install Apps
-sudo apt install -y zsh curl git jq zip
+sudo apt install -y zsh curl git jq zip ntp
+
+# Set TimeZone
+sudo timedatectl set-timezone Europe/Berlin
 
 # SpeedTest
 wget https://raw.githubusercontent.com/tankibaj/speedtest/master/speedtest
