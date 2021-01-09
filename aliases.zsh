@@ -24,7 +24,7 @@ alias size="sudo du --summarize --human-readable"
 alias ports='sudo netstat -tulanp'
 alias killvpn="sudo killall openvpn"
 alias ipt="sudo iptables -nvL"
-alias ipa='bash ~/.dotfiles/func/ipa.sh'
+alias ipa='bash ~/.dotfiles/functions/ipa.sh'
 alias ls=' ls -lhF --time-style=long-iso --color=auto'
 alias ls.=' ls -lhFa --time-style=long-iso --color=auto'
 
