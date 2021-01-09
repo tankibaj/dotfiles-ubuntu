@@ -1,3 +1,16 @@
+# Manage Package
+if [ -f /usr/bin/apt ]; then
+    alias update='sudo apt update'
+    alias upgrade='sudo apt dist-upgrade'
+    alias install='sudo apt install'
+fi
+
+# Prompt confirmation and explain what is being done
+alias rm='rm -iv'
+alias mv='mv -iv'
+alias cp='cp -iv'
+alias ln='ln -iv'
+
 # Basic
 alias zshrc='sudo nano ~/.dotfiles/.zshrc'
 alias terminal-reload='source ~/.dotfiles/.zshrc'
@@ -8,11 +21,15 @@ alias myip='curl https://ifconfig.co'
 alias myip2="curl https://ipecho.net/plain"
 alias whoIsMe="curl -s "http://ifconfig.co/json" | jq -r '.'"
 alias size="sudo du --summarize --human-readable"
-alias ports="netstat -tupln"
+alias ports='sudo netstat -tulanp'
 alias killvpn="sudo killall openvpn"
 alias ipt="sudo iptables -nvL"
+alias ipa='bash ~/.dotfiles/func/ipa.sh'
+alias ls=' ls -lhF --time-style=long-iso --color=auto'
+alias ls.=' ls -lhFa --time-style=long-iso --color=auto'
 
 # Path
+alias cd..='cd ..'
 alias home="cd ~"
 alias sites="cd /var/www/"
 alias dotfiles='~/.dotfiles'
@@ -58,6 +75,8 @@ alias vautostart='sudo virsh autostart'
 alias vreboot='sudo virsh reboot'
 alias vreset='sudo virsh reset'
 alias vslist='sudo virsh snapshot-list'
+
+# Delte KVM instance
 vDelete() {
   if [ -z $1 ]; then
     echo "VM name required!!"
@@ -68,6 +87,8 @@ vDelete() {
   sudo virsh pool-destroy $1
   sudo rm -rf /var/lib/libvirt/images/$1.qcow2
 }
+
+# Create KVM Screenshot
 vCreateScreenshot() {
   if [ -z $1 ]; then
     echo "VM name required!!"
@@ -77,6 +98,8 @@ vCreateScreenshot() {
   fi
   sudo virsh snapshot-create-as --domain $1 --name $2 --description $2
 }
+
+# Revert KVM Screenshot
 vRevertScreenshot() {
   if [ -z $1 ]; then
     echo "VM name required!!"
@@ -86,6 +109,8 @@ vRevertScreenshot() {
   fi
   sudo virsh snapshot-revert --domain $1 --snapshotname $2 --running
 }
+
+# Delte KVM Screenshot
 vDeleteScreenshot() {
   if [ -z $1 ]; then
     echo "VM name required!!"
@@ -94,4 +119,29 @@ vDeleteScreenshot() {
     echo "Screenshot name required!!"
   fi
   sudo virsh snapshot-delete --domain $1 --snapshotname $2
+}
+
+# Make dir and go
+mdgo() {
+    test -n $1 || return
+    mkdir -p $1 && cd $1
+}
+
+# Extract archive
+extract() {
+    if [ -f $1 ]; then
+        case $1 in
+        *.tar) tar xf $1 ;;
+        *.tar.bz2) tar xjvf $1 ;;
+        *.tar.gz) tar xzvf $1 ;;
+        *.tar.xz) tar xvf $1 ;;
+        *.tbz2) tar xjf $1 ;;
+        *.tgz) tar xzf $1 ;;
+        *.gz) gunzip $1 ;;
+        *.zip) unzip $1 ;;
+        *) echo "'$1' cannot be extracted with this method!!!" ;;
+        esac
+    else
+        echo "'$1' is not a valid file"
+    fi
 }
