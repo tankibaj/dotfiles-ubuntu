@@ -3,6 +3,7 @@ if [ -f /usr/bin/apt ]; then
     alias update='sudo apt update'
     alias upgrade='sudo apt dist-upgrade'
     alias install='sudo apt install'
+    alias autoremove='sudo apt autoremove'
 fi
 
 # Prompt confirmation and explain what is being done
