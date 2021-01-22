@@ -17,7 +17,7 @@ isUbuntu() {
 
 isUbuntu ||
   {
-    echo "[${red}Error${plain}] This script can be run only on Ubuntu|Debian OS"
+    echo "[${red}Error${plain}] This script can be run only on Ubuntu OS"
     exit 1
   }
 
