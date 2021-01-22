@@ -6,24 +6,16 @@ green='\033[0;32m'
 yellow='\033[0;33m'
 plain='\033[0m'
 
-check_OS() {
-  if [[ -f /etc/lsb-release ]]; then
-    return 0
-  elif grep -Eqi "debian|raspbian" /etc/issue; then
-    return 0
-  elif grep -Eqi "ubuntu" /etc/issue; then
-    return 0
-  elif grep -Eqi "debian|raspbian" /proc/version; then
-    return 0
-  elif grep -Eqi "ubuntu" /proc/version; then
-    return 0
-  else
-    return 1
-  fi
+isUbuntu() {
+    if [ "$(cat /etc/issue | grep Ubuntu | awk '{ print $1}')" = "Ubuntu" ]; then
+        return 0
+    else
+        return 1
+    fi
 }
 
 
-check_OS ||
+isUbuntu ||
   {
     echo -e "[${red}Error${plain}] This script can be run only on Ubuntu|Debian OS"
     exit 1
