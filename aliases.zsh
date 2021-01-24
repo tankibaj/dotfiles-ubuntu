@@ -66,6 +66,18 @@ alias nginxAccess='sudo tail -n 100 /var/log/nginx/access.log'
 alias site-available='cd /etc/nginx/sites-available/'
 alias site-enabled='cd /etc/nginx/sites-enabled/'
 
+# Docker
+alias dsa='docker ps -aq | xargs docker stop'
+alias drma='docker ps -aq | xargs docker rm'
+alias drmia='docker images -aq | xargs docker rmi -f'
+alias dit='docker exec -it'
+alias dpsa='docker ps -a'
+alias dps='docker ps'
+alias dlog='docker logs'
+alias di='docker images'
+alias dc='docker-compose'
+alias dcupd='docker-compose up -d'
+alias dcup='docker-compose up'
 
 # Virsh
 alias vlist='sudo virsh list --all'
