@@ -82,14 +82,17 @@ alias dcup='docker-compose up'
 alias dcb='docker-compose build'
 
 # Virsh
-alias vlist='sudo virsh list --all'
+alias vls='sudo virsh list --all'
 alias vinfo='sudo virsh dominfo'
-alias vshutdown='sudo virsh shutdown'
+alias vsd='sudo virsh shutdown'
 alias vstart='sudo virsh start'
-alias vautostart='sudo virsh autostart'
+alias vas='sudo virsh autostart'
 alias vreboot='sudo virsh reboot'
 alias vreset='sudo virsh reset'
-alias vslist='sudo virsh snapshot-list'
+alias vsls='sudo virsh snapshot-list'
+alias vcreate='sudo virsh create'
+alias vdxml='sudo virsh dumpxml'
+alias vedit='sudo virsh edit'
 
 # Delte KVM instance
 vDelete() {
