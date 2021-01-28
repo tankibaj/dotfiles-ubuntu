@@ -28,13 +28,13 @@ alias ipt="sudo iptables -nvL"
 alias ipa='bash ~/.dotfiles/functions/ipa.sh'
 alias ls=' ls -lhF --time-style=long-iso --color=auto'
 alias ls.=' ls -lhFa --time-style=long-iso --color=auto'
+alias gs="egrep '^\s+\$' GettingStarted.txt | sed -e 's@\$@@'"
 
 # Path
 alias cd..='cd ..'
 alias home="cd ~"
 alias sites="cd /var/www/"
 alias dotfiles='~/.dotfiles'
-
 
 # Git Alias
 #alias init='git init'
@@ -111,35 +111,35 @@ vDelete() {
 
 # Create KVM Screenshot
 vCreateScreenshot() {
-  if [ -z $1 ]; then
-    echo "VM name required!!"
-  fi
-  if [ -z $2 ]; then
-    echo "Screenshot name required!!"
-  fi
-  sudo virsh snapshot-create-as --domain $1 --name $2 --description $2
+    if [ -z $1 ]; then
+        echo "VM name required!!"
+    fi
+    if [ -z $2 ]; then
+        echo "Screenshot name required!!"
+    fi
+    sudo virsh snapshot-create-as --domain $1 --name $2 --description $2
 }
 
 # Revert KVM Screenshot
 vRevertScreenshot() {
-  if [ -z $1 ]; then
-    echo "VM name required!!"
-  fi
-  if [ -z $2 ]; then
-    echo "Screenshot name required!!"
-  fi
-  sudo virsh snapshot-revert --domain $1 --snapshotname $2 --running
+    if [ -z $1 ]; then
+        echo "VM name required!!"
+    fi
+    if [ -z $2 ]; then
+        echo "Screenshot name required!!"
+    fi
+    sudo virsh snapshot-revert --domain $1 --snapshotname $2 --running
 }
 
 # Delte KVM Screenshot
 vDeleteScreenshot() {
-  if [ -z $1 ]; then
-    echo "VM name required!!"
-  fi
-  if [ -z $2 ]; then
-    echo "Screenshot name required!!"
-  fi
-  sudo virsh snapshot-delete --domain $1 --snapshotname $2
+    if [ -z $1 ]; then
+        echo "VM name required!!"
+    fi
+    if [ -z $2 ]; then
+        echo "Screenshot name required!!"
+    fi
+    sudo virsh snapshot-delete --domain $1 --snapshotname $2
 }
 
 # Make dir and go
