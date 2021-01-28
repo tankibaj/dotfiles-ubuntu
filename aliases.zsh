@@ -103,7 +103,8 @@ vDelete() {
   sudo virsh destroy $1
   sudo virsh undefine $1
   sudo virsh pool-destroy $1
-  sudo rm -rf /var/lib/libvirt/images/$1.qcow2
+  sudo rm -rfv /var/lib/libvirt/images/$1.qcow2
+  sudo rm -rfv /var/lib/libvirt/images/$1-seed.qcow2
 }
 
 # Create KVM Screenshot
