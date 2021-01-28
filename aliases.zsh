@@ -28,7 +28,9 @@ alias ipt="sudo iptables -nvL"
 alias ipa='bash ~/.dotfiles/functions/ipa.sh'
 alias ls=' ls -lhF --time-style=long-iso --color=auto'
 alias ls.=' ls -lhFa --time-style=long-iso --color=auto'
-alias gs="egrep '^\s+\$' GettingStarted.txt | sed -e 's@\$@@'"
+gs() {
+    egrep '^\s+\$' GettingStarted.txt | sed -e 's@\$@@'
+}
 
 # Path
 alias cd..='cd ..'
