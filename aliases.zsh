@@ -40,7 +40,7 @@ ips() {
     fi
 }
 
-gs() {
+gettingStarted() {
     egrep '^\s+\$' GettingStarted.txt | sed -e 's@\$@@'
 }
 
