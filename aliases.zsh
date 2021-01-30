@@ -41,8 +41,29 @@ ips() {
 }
 
 gettingStarted() {
-    egrep '^\s+\$' GettingStarted.txt | sed -e 's@\$@@'
+    if [ -e GettingStarted.txt ]; then
+        egrep '^\s+\$' GettingStarted.txt | sed -e 's@\$@@'
+    else
+        echo 'GettingStarted does not exist!!'
+    fi
 }
+
+codeBlock() {
+    if [ -e README.md ]; then
+        sed -n '/^```/,/^```/ p' <README.md | sed '/^```/ d'
+    else
+        echo 'README does not exist!!'
+    fi
+}
+
+codeBlockBash() {
+    if [ -e README.md ]; then
+        sed -n '/^```bash/,/^```/ p' <README.md | sed '/^```/ d'
+    else
+        echo 'README does not exist!!'
+    fi
+}
+
 
 # Path
 alias cd..='cd ..'
