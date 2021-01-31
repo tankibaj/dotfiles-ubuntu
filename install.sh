@@ -7,7 +7,7 @@ yellow='\033[0;33m'
 plain='\033[0m'
 
 isSupportedOS() {
-    if [ "$(cat /etc/issue | grep Ubuntu | awk '{ print $1}')" = "Ubuntu" ] && [ "$(cat /etc/issue | grep Debian | awk '{ print $1}')" = "Debian" ]; then
+    if [ "$(cat /etc/issue | grep Ubuntu | awk '{ print $1}')" = "Ubuntu" ] || [ "$(cat /etc/issue | grep Debian | awk '{ print $1}')" = "Debian" ]; then
         return 0
     else
         return 1
