@@ -64,6 +64,16 @@ codeBlockBash() {
     fi
 }
 
+# See all paths, one element per line.
+# If an argument is supplied, grep fot it.
+PATH() {
+    test -n "$1" && {
+        echo $PATH | perl -p -e "s/:/\n/g;" | grep -i "$1"
+    } || {
+        echo $PATH | perl -p -e "s/:/\n/g;"
+    }
+}
+
 
 # Path
 alias cd..='cd ..'
