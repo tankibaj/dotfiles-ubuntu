@@ -20,7 +20,7 @@ alias mycountry='curl https://ifconfig.co/country'
 alias mycity='curl https://ifconfig.co/city'
 alias myip='curl https://ifconfig.co'
 alias myip2="curl https://ipecho.net/plain"
-alias whoIsMe="curl -s "http://ifconfig.co/json" | jq -r '.'"
+alias whoisme="curl -s "http://ifconfig.co/json" | jq -r '.'"
 alias size="sudo du --summarize --human-readable"
 alias ports='sudo netstat -tulanp'
 alias killvpn="sudo killall openvpn"
@@ -210,4 +210,8 @@ extract() {
     else
         echo "'$1' is not a valid file"
     fi
+}
+
+whoisip() {
+    curl -s http://ip-api.com/json/$1 | jq -r '.'
 }
