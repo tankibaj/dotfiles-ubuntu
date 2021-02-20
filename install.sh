@@ -122,7 +122,7 @@ installDotfiles() {
   git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH/plugins/zsh-syntax-highlighting
 
   # Symlinks the .zshrc file from .dotfiles/.zshrc
-  ln -s $HOME/.dotfiles/.zshrc $HOME/.zshrc
+  ln -s DOTFILES/.zshrc $HOME/.zshrc
 
   # nanorc - improve nano syntax
   git clone https://github.com/scopatz/nanorc.git $NANORC
