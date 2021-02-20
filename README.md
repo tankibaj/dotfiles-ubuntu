@@ -1,4 +1,4 @@
-## Install dotfile
+## Installation
 
 #### curl
 
