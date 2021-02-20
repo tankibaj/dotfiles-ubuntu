@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
-set -o errexit
-# set -o pipefail
-set -o nounset # Error Handling
+DOTFILES=$HOME/.dotfiles # dotfiles path
+ZSH=$HOME/.oh-my-zsh     # ZSH path
+NANORC=$HOME/.nano       # nanorc path
 
 isSupportedOS() {
   if [ "$(cat /etc/issue | grep Ubuntu | awk '{ print $1}')" = "Ubuntu" ] || [ "$(cat /etc/issue | grep Debian | awk '{ print $1}')" = "Debian" ]; then
@@ -58,10 +58,11 @@ source /etc/default/locale
 # Set TimeZone
 sudo timedatectl set-timezone Europe/Berlin
 
-DOTFILES=$HOME/.dotfiles # dotfiles path
-ZSH=$HOME/.oh-my-zsh     # ZSH path
-
 # Remove old files directories if exist
+if [[ -d $NANORC ]]; then
+  sudo rm -rf $NANORC
+fi
+
 if [[ -d $DOTFILES ]]; then
   sudo rm -rf $DOTFILES
 fi
@@ -77,6 +78,9 @@ fi
 if [[ -L $HOME/.zshrc ]]; then
   sudo rm -f $HOME/.zshrc
 fi
+
+# nanorc - improve nano syntax
+git clone https://github.com/scopatz/nanorc.git $NANORC
 
 # ZSH
 sudo usermod -s /usr/bin/zsh $(whoami)
