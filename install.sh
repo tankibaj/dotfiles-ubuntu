@@ -79,9 +79,6 @@ if [[ -L $HOME/.zshrc ]]; then
   sudo rm -f $HOME/.zshrc
 fi
 
-# nanorc - improve nano syntax
-git clone https://github.com/scopatz/nanorc.git $NANORC
-
 # ZSH
 sudo usermod -s /usr/bin/zsh $(whoami)
 
@@ -105,6 +102,10 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH/plugins/
 
 # Symlinks the .zshrc file from .dotfiles/.zshrc
 ln -s $HOME/.dotfiles/.zshrc $HOME/.zshrc
+
+# nanorc - improve nano syntax
+git clone https://github.com/scopatz/nanorc.git $NANORC
+
 
 echo
 echo

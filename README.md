@@ -1,20 +1,13 @@
 ## Install dotfile
 
-#### via curl
+#### curl
 
 ```bash
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/tankibaj/dotfiles-ubuntu/main/install.sh)"
+curl -fsSL https://raw.githubusercontent.com/tankibaj/dotfiles-ubuntu/main/install.sh | bash
 ```
 
-#### via wget
+#### wget
 
 ```bash
-sh -c "$(wget -O- https://raw.githubusercontent.com/tankibaj/dotfiles-ubuntu/main/install.sh)"
-```
-
-
-## Source .zshrc
-
-```bash
-source $HOME/.zshrc
+wget -O- -q https://raw.githubusercontent.com/tankibaj/dotfiles-ubuntu/main/install.sh | bash
 ```
