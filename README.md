@@ -3,11 +3,11 @@
 #### curl
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/tankibaj/dotfiles-ubuntu/main/install.sh | bash
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/tankibaj/dotfiles-ubuntu/main/install.sh)"
 ```
 
 #### wget
 
 ```bash
-wget -O- -q https://raw.githubusercontent.com/tankibaj/dotfiles-ubuntu/main/install.sh | bash
+bash -c "$(wget -O- -q https://raw.githubusercontent.com/tankibaj/dotfiles-ubuntu/main/install.sh)"
 ```
