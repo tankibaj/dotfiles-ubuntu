@@ -151,9 +151,9 @@ if targetOS ubuntu debian; then
       installDotfiles
     fi
   fi
-
 else
   echo
   echo "[ERROR] This script can be run only on Ubuntu | Debian OS"
+  echo
   exit 1
 fi
