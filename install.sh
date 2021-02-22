@@ -63,7 +63,7 @@ installDotfiles() {
 
   # Update apt and install apps
   sudo apt update
-  sudo apt install -qq -y zsh curl git jq zip ntp
+  sudo apt install -qq -y zsh curl git jq zip ntp net-tools
 
   # SpeedTest
   wget -q https://raw.githubusercontent.com/tankibaj/speedtest/master/speedtest
