@@ -112,19 +112,25 @@ alias site-available='cd /etc/nginx/sites-available/'
 alias site-enabled='cd /etc/nginx/sites-enabled/'
 
 # Docker
+alias dstart='docker start'
 alias dsa='docker ps -aq | xargs docker stop'
-alias drma='docker ps -aq | xargs docker rm'
+alias ds='docker stop'
+alias drma='docker ps -aq | xargs docker rm -f'
+alias drm='docker rm -f'
 alias drmi='docker rmi -f'
 alias drmia='docker images -aq | xargs docker rmi -f'
 alias dit='docker exec -it'
 alias dpsa='docker ps -a'
 alias dps='docker ps'
-alias dlog='docker logs'
+alias dlogs='docker logs'
 alias di='docker images'
 alias dc='docker-compose'
 alias dcupd='docker-compose up -d'
 alias dcup='docker-compose up'
+alias dcd='docker-compose down'
 alias dcb='docker-compose build'
+alias dinsp='docker inspect'
+
 
 # Virsh
 alias vls='sudo virsh list --all'
