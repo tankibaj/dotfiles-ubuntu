@@ -28,6 +28,7 @@ alias ipt="sudo iptables -nvL"
 #alias ipa='bash ~/.dotfiles/functions/ipa.sh'
 alias ls=' ls -lhF --time-style=long-iso --color=auto'
 alias ls.=' ls -lhFa --time-style=long-iso --color=auto'
+alias services='service  --status-all'
 
 # Basic functions
 ips() {
