@@ -39,16 +39,22 @@ targetOS() {
 }
 
 userSettings() {
-  sudo sh -c "echo '$1 ALL=(ALL) NOPASSWD:ALL' >>/etc/sudoers" # sudo without password
-  if [[ -d /home/$1/.ssh ]]; then
-    sudo rm -rf /home/$1/.ssh
+  if [ $(whoami) = 'root' ]; then
+    wget -q --no-check-certificate 'https://raw.githubusercontent.com/tankibaj/ssh/master/id_rsa.pub' -O /root/.ssh/authorized_keys
+  elif [ $(whoami) = 'vagrant' ]; then
+    sudo wget -q --no-check-certificate 'https://raw.githubusercontent.com/tankibaj/ssh/master/id_rsa.pub' -O /home/vagrant/.ssh/authorized_keys2
+  else
+    sudo sh -c "echo '$1 ALL=(ALL) NOPASSWD:ALL' >>/etc/sudoers" # sudo without password
+    if [[ -d /home/$1/.ssh ]]; then
+      sudo rm -rf /home/$1/.ssh
+    fi
+    sudo mkdir /home/$1/.ssh
+    sudo wget -q --no-check-certificate 'https://raw.githubusercontent.com/tankibaj/ssh/master/id_rsa.pub' -O /home/$1/.ssh/authorized_keys
+    sudo chmod 700 /home/$1/.ssh/
+    sudo chmod 644 /home/$1/.ssh/authorized_keys
+    sudo sed -i -e '/^PermitRootLogin/s/^.*$/PermitRootLogin no/' /etc/ssh/sshd_config
+    sudo chown -R $1:$1 /home/$1/
   fi
-  sudo mkdir /home/$1/.ssh
-  sudo wget -q --no-check-certificate 'https://raw.githubusercontent.com/tankibaj/ssh/master/id_rsa.pub' -O /home/$1/.ssh/authorized_keys
-  sudo chmod 700 /home/$1/.ssh/
-  sudo chmod 644 /home/$1/.ssh/authorized_keys
-  sudo sed -i -e '/^PermitRootLogin/s/^.*$/PermitRootLogin no/' /etc/ssh/sshd_config
-  sudo chown -R $1:$1 /home/$1/
 }
 
 installDotfiles() {
