@@ -88,16 +88,15 @@ alias clone='git clone'
 alias add='git add .'
 alias commit='git commit -m'
 alias status='git status'
-alias gl='git log'
 alias log='git log'
 alias push='git push -u'
 alias pull='git pull'
 alias nah='git reset --hard && git clean -df'
-alias nahTo='git reset --hard'
-alias showallbranch='git branch -a'
+alias nahto='git reset --hard'
+alias branch='git branch -a'
 alias checkout='git checkout'
 alias checkoutnew='git checkout -b'
-alias deletebranch='git branch -D'
+alias branchDel='git branch -D'
 alias setorigin='git remote set-url origin'
 alias origin='git remote show origin'
 alias remote='git remote -v'
@@ -105,6 +104,13 @@ alias remote-remove='git remote remove'
 alias remote-rename='git remote rename'
 alias commit-count='git rev-list --count'
 alias git-remove='rm -rf .git*'
+gls() {
+    if [[ $# -eq 1 ]]; then
+        curl -s https://api.github.com/users/$1/repos | jq '.[]|["name: "+.name,"url: "+.html_url,"clone: "+.clone_url,"ssh: "+.ssh_url]'
+    else
+        echo "Usage: gls <github username>"
+    fi
+}
 
 # Nginx
 alias nginxError='sudo tail -n 100 /var/log/nginx/error.log'
