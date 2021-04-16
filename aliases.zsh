@@ -75,7 +75,6 @@ PATH() {
     }
 }
 
-
 # Path
 alias cd..='cd ..'
 alias home="cd ~"
@@ -138,7 +137,6 @@ alias dcd='docker-compose down'
 alias dcb='docker-compose build'
 alias dinsp='docker inspect'
 
-
 # Virsh
 alias vls='sudo virsh list --all'
 alias vinfo='sudo virsh dominfo'
@@ -199,6 +197,29 @@ vDeleteScreenshot() {
     fi
     sudo virsh snapshot-delete --domain $1 --snapshotname $2
 }
+
+#[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]
+
+#=========================================================================
+#      ---------------| Terraform |---------------
+#=========================================================================
+alias fmt='terraform fmt'
+alias validate='terraform validate'
+alias plan='terraform plan'
+alias apply='terraform apply'
+alias state='terraform state'
+alias show='terraform show'
+alias tws='terraform workspace'
+destroy() {
+    if [ -e .vagrant ]; then
+        vagrant destroy
+    elif [ -e .terraform ]; then
+        terraform destroy
+    else
+        echo "This action isn't allowed to run in this directory"
+    fi
+}
+#[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]
 
 # Make dir and go
 mdgo() {
