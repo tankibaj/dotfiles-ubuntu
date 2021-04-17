@@ -8,17 +8,17 @@ fi
 
 # Systemctl
 if [ -f /usr/bin/systemctl ]; then
-    alias ctlrestart='sudo systemctl restart'       # Start or restart one or more units
-    alias ctlstatus='sudo systemctl status'         # Show runtime status of one or more units
-    alias ctlstop='sudo systemctl stop'             # Stop (deactivate) one or more units
-    alias ctlstart='sudo systemctl start'           # Start (activate) one or more units
-    alias ctlreload='sudo systemctl reload'         # Reload one or more units
-    alias ctlenable='sudo systemctl enable'         # Enable one or more unit files
-    alias ctldisable='sudo systemctl disable'       # Disable one or more unit files
-    alias ctlkill='sudo systemctl kill'             # Send signal to processes of a unit
-    alias ctlclean='sudo systemctl clean'           # Clean runtime, cache, state, logs or configuration of unit
-    alias ctlisactive='sudo systemctl is-active'    # Check whether units are active
-    alias ctlisfailed='sudo systemctl is-failed'    # Check whether units are failed
+    alias ctlrestart='sudo systemctl restart'    # Start or restart one or more units
+    alias ctlstatus='sudo systemctl status'      # Show runtime status of one or more units
+    alias ctlstop='sudo systemctl stop'          # Stop (deactivate) one or more units
+    alias ctlstart='sudo systemctl start'        # Start (activate) one or more units
+    alias ctlreload='sudo systemctl reload'      # Reload one or more units
+    alias ctlenable='sudo systemctl enable'      # Enable one or more unit files
+    alias ctldisable='sudo systemctl disable'    # Disable one or more unit files
+    alias ctlkill='sudo systemctl kill'          # Send signal to processes of a unit
+    alias ctlclean='sudo systemctl clean'        # Clean runtime, cache, state, logs or configuration of unit
+    alias ctlisactive='sudo systemctl is-active' # Check whether units are active
+    alias ctlisfailed='sudo systemctl is-failed' # Check whether units are failed
 fi
 
 # Prompt confirmation and explain what is being done
@@ -97,28 +97,27 @@ alias sites="cd /var/www/"
 alias dotfiles='~/.dotfiles'
 
 # Git Alias
-if [ -d .git ]; then
-    alias clone='git clone'
-    alias add='git add .'
-    alias commit='git commit -m'
-    alias status='git status'
-    alias log='git log'
-    alias push='git push -u'
-    alias pull='git pull'
-    alias nah='git reset --hard && git clean -df'
-    alias nahto='git reset --hard'
-    alias branch='git branch -a'
-    alias checkout='git checkout'
-    alias checkoutnew='git checkout -b'
-    alias branchDel='git branch -D'
-    alias setorigin='git remote set-url origin'
-    alias origin='git remote show origin'
-    alias remote='git remote -v'
-    alias remote-remove='git remote remove'
-    alias remote-rename='git remote rename'
-    alias commit-count='git rev-list --count'
-    alias git-remove='rm -rf .git*'
-fi
+alias clone='git clone'
+alias add='git add .'
+alias commit='git commit -m'
+alias status='git status'
+alias log='git log'
+alias push='git push -u'
+alias pull='git pull'
+alias nah='git reset --hard && git clean -df'
+alias nahto='git reset --hard'
+alias branch='git branch -a'
+alias checkout='git checkout'
+alias checkoutnew='git checkout -b'
+alias branchDel='git branch -D'
+alias setorigin='git remote set-url origin'
+alias origin='git remote show origin'
+alias remote='git remote -v'
+alias remote-remove='git remote remove'
+alias remote-rename='git remote rename'
+alias commit-count='git rev-list --count'
+alias git-remove='rm -rf .git*'
+
 gls() {
     if [[ $# -eq 1 ]]; then
         curl -s https://api.github.com/users/$1/repos | jq '.[]|["name: "+.name,"url: "+.html_url,"clone: "+.clone_url,"ssh: "+.ssh_url]'
