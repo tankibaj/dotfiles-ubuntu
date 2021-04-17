@@ -97,7 +97,7 @@ alias sites="cd /var/www/"
 alias dotfiles='~/.dotfiles'
 
 # Git Alias
-if [ -e .git ]; then
+if [ -d .git ]; then
     alias clone='git clone'
     alias add='git add .'
     alias commit='git commit -m'
