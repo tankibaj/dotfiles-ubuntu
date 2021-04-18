@@ -132,42 +132,45 @@ alias site-available='cd /etc/nginx/sites-available/'
 alias site-enabled='cd /etc/nginx/sites-enabled/'
 
 # Docker
+alias dpsa='docker ps -a'
+alias dps='docker ps'
 alias dstart='docker start'
 alias dsa='docker ps -aq | xargs docker stop'
-alias ds='docker stop'
+alias dstop='docker stop'
 alias drma='docker ps -aq | xargs docker rm -f'
 alias drm='docker rm -f'
 alias drmi='docker rmi -f'
 alias drmia='docker images -aq | xargs docker rmi -f'
 alias dit='docker exec -it'
-alias dpsa='docker ps -a'
-alias dps='docker ps'
 alias dlogs='docker logs'
 alias di='docker images'
 alias dc='docker-compose'
 alias dcupd='docker-compose up -d'
 alias dcup='docker-compose up'
-alias dcd='docker-compose down'
-alias dcb='docker-compose build'
-alias dinsp='docker inspect'
+alias dcdown='docker-compose down'
+alias dcbuild='docker-compose build'
+alias dins='docker inspect'
 
 # Virsh
 alias vls='sudo virsh list --all'
+alias vlssnap='sudo virsh snapshot-list'
+alias vlspool='sudo virsh pool-list'
+alias vlsnet='sudo virsh net-list'
+alias vlsvol='sudo virsh vol-list'
 alias vinfo='sudo virsh dominfo'
-alias vsd='sudo virsh shutdown'
+alias vshutdown='sudo virsh shutdown'
 alias vstart='sudo virsh start'
-alias vas='sudo virsh autostart'
+alias vautostart='sudo virsh autostart'
 alias vreboot='sudo virsh reboot'
 alias vreset='sudo virsh reset'
-alias vsls='sudo virsh snapshot-list'
 alias vcreate='sudo virsh create'
-alias vdxml='sudo virsh dumpxml'
+alias vdump='sudo virsh dumpxml'
 alias vedit='sudo virsh edit'
 
 # Delte KVM instance
-vDelete() {
+vDestroy() {
     if [ -z $1 ]; then
-        echo "VM name required!!"
+        echo "Instance name required!!"
     fi
     sudo virsh shutdown $1
     sudo virsh destroy $1
@@ -182,7 +185,7 @@ vDelete() {
 # Create KVM Screenshot
 vCreateScreenshot() {
     if [ -z $1 ]; then
-        echo "VM name required!!"
+        echo "Instance name required!!"
     fi
     if [ -z $2 ]; then
         echo "Screenshot name required!!"
@@ -193,7 +196,7 @@ vCreateScreenshot() {
 # Revert KVM Screenshot
 vRevertScreenshot() {
     if [ -z $1 ]; then
-        echo "VM name required!!"
+        echo "Instance name required!!"
     fi
     if [ -z $2 ]; then
         echo "Screenshot name required!!"
@@ -204,7 +207,7 @@ vRevertScreenshot() {
 # Delte KVM Screenshot
 vDeleteScreenshot() {
     if [ -z $1 ]; then
-        echo "VM name required!!"
+        echo "Instance name required!!"
     fi
     if [ -z $2 ]; then
         echo "Screenshot name required!!"
