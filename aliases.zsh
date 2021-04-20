@@ -150,6 +150,7 @@ alias dcup='docker-compose up'
 alias dcdown='docker-compose down'
 alias dcbuild='docker-compose build'
 alias dins='docker inspect'
+alias dip="docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}'"
 
 # Virsh
 alias vls='sudo virsh list --all'
