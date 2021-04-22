@@ -91,12 +91,7 @@ PATH() {
 }
 
 # Path
-alias cd..='cd ..'
-alias home="cd ~"
-alias sites="cd /var/www/"
-alias dotfiles='~/.dotfiles'
-
-# Git Alias
+#alias init='git init'
 alias clone='git clone'
 alias add='git add .'
 alias commit='git commit -m'
@@ -106,18 +101,17 @@ alias push='git push -u'
 alias pull='git pull'
 alias nah='git reset --hard && git clean -df'
 alias nahto='git reset --hard'
-alias branch='git branch -a'
+alias bls='git branch -a'
 alias checkout='git checkout'
 alias checkoutnew='git checkout -b'
 alias branchDel='git branch -D'
 alias setorigin='git remote set-url origin'
 alias origin='git remote show origin'
-alias remote='git remote -v'
-alias remote-remove='git remote remove'
-alias remote-rename='git remote rename'
+alias rls='git remote -v'
+alias remoterm='git remote remove'
+alias rremoteren='git remote rename'
 alias commit-count='git rev-list --count'
 alias git-remove='rm -rf .git*'
-
 gls() {
     if [[ $# -eq 1 ]]; then
         curl -s https://api.github.com/users/$1/repos | jq '.[]|["name: "+.name,"url: "+.html_url,"clone: "+.clone_url,"ssh: "+.ssh_url]'
@@ -125,6 +119,8 @@ gls() {
         echo "Usage: gls <github username>"
     fi
 }
+
+
 # Nginx
 alias nginxError='sudo tail -n 100 /var/log/nginx/error.log'
 alias nginxAccess='sudo tail -n 100 /var/log/nginx/access.log'
