@@ -38,11 +38,12 @@ alias myip2="curl https://ipecho.net/plain"
 alias whoisme="curl -s "http://ifconfig.co/json" | jq -r '.'"
 alias size="sudo du -cksh * | sort -hr"
 alias ports='sudo netstat -tulanp'
+alias listen='ss -l -4 | grep -v "127\.0\.0" | grep "LISTEN"'
 alias killvpn="sudo killall openvpn"
 alias ipt="sudo iptables -nvL"
 #alias ipa='bash ~/.dotfiles/functions/ipa.sh'
-alias ls=' ls -lhF --time-style=long-iso --color=auto'
-alias ls.=' ls -lhFa --time-style=long-iso --color=auto'
+alias ls='ls -lhF --time-style=long-iso --color=auto'
+alias ls.='ls -lhFa --time-style=long-iso --color=auto'
 alias services='systemctl list-units --type=service'
 
 # Basic functions
