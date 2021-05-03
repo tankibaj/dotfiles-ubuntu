@@ -130,6 +130,9 @@ installDotfiles() {
   # Symlinks the .zshrc file from .dotfiles/.zshrc
   ln -s $DOTFILES/.zshrc $HOME/.zshrc
 
+  # Symlinks the .p10k.zsh file from .dotfiles/.p10k.zsh
+  ln -s $DOTFILES/.p10k.zsh $HOME/.p10k.zsh
+
   # nanorc - improve nano syntax
   git clone https://github.com/scopatz/nanorc.git $NANORC
 
