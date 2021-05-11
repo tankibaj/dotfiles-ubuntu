@@ -77,7 +77,32 @@ ZSH_CUSTOM=$DOTFILES
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 #plugins=(git)
-plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
+plugins=(
+    zsh-autosuggestions
+    zsh-syntax-highlighting
+    cp
+    iterm2
+    git
+    github
+    gitignore
+    brew
+    aws
+    kubectl
+    helm
+    laravel
+    microk8s
+    minikube
+    docker-compose
+    docker
+    docker-machine
+    vagrant
+    vault
+    vscode
+    terraform
+    ansible
+    python
+    npm
+    )
 
 ZSH_DISABLE_COMPFIX="true"
 
