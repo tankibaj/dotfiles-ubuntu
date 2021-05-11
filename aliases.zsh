@@ -28,6 +28,8 @@ alias cp='cp -iv'
 alias ln='ln -iv'
 
 # Basic
+alias dotfiles='cd ~/.dotfiles'
+alias workspace='cd ~/workspace'
 alias zshrc='sudo nano ~/.dotfiles/.zshrc'
 alias terminal-reload='source ~/.dotfiles/.zshrc'
 alias aliases='sudo nano ~/.dotfiles/aliases.zsh'
