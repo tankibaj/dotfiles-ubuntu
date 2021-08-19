@@ -9,11 +9,11 @@ Last year, I decided to execute a single command on a new machine to pull down a
 ###### wget
 
 ```bash
-bash -c "$(wget -O- -q https://raw.githubusercontent.com/tankibaj/dotfiles-ubuntu/main/install.sh)"
+bash -c "$(wget -O- -q https://raw.githubusercontent.com/tankibaj/dotfiles-ubuntu/work/install.sh)"
 ```
 
 ###### curl
 
 ```bash
-bash -c "$(curl -fsSL https://raw.githubusercontent.com/tankibaj/dotfiles-ubuntu/main/install.sh)"
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/tankibaj/dotfiles-ubuntu/work/install.sh)"
 ```
