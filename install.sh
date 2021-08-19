@@ -57,35 +57,40 @@ userSettings() {
   fi
 }
 
-installDotfiles() {
-  echo
-  echo
-  echo "[INFO] Setting up dotfiles....."
-  echo
-  echo
+installEXA() {
+  EXA_LATEST_RELEASE=$(curl -s https://api.github.com/repos/ogham/exa/releases/latest | grep -oP '"tag_name": "\K(.*)(?=")')
+  cd /tmp
+  wget -c https://github.com/ogham/exa/releases/download/$EXA_LATEST_RELEASE/exa-linux-x86_64-$EXA_LATEST_RELEASE.zip
+  unzip exa-linux-x86_64-$EXA_LATEST_RELEASE.zip
+  sudo mv bin/exa /usr/local/bin/exa
+  sudo mv completions/exa.zsh /usr/local/share/zsh/site-functions/exa.zsh
+  rm -rf bin
+  rm -rf completions
+  rm -rf man
+  rm -f exa-linux-x86_64-$EXA_LATEST_RELEASE.zip
+  cd -
+}
 
-  # SSH KEY | SUDO without pass | Permission
-  userSettings $USER
-
-  # Update apt and install apps
-  sudo apt update
-  sudo apt install -qq -y zsh curl git jq zip ntp net-tools
-
-  # SpeedTest
+installSpeedTest() {
   wget -q https://raw.githubusercontent.com/tankibaj/speedtest/master/speedtest
   sudo chmod +x speedtest
   sudo mv speedtest /usr/bin/speedtest
+}
 
-  # Locale
+setupLocale() {
   sudo rm -f /etc/default/locale
   sudo locale-gen "en_US.UTF-8"
   sudo update-locale LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8
   source /etc/default/locale
-
-  # Set TimeZone
   sudo timedatectl set-timezone Europe/Berlin
+}
 
-  # Remove old files directories if exist
+installPackage() {
+  sudo apt update
+  sudo apt install -qq -y zsh curl git jq zip ntp net-tools
+}
+
+cleanUpDir() {
   if [[ -d $DOTFILES ]]; then
     sudo rm -rf $DOTFILES
   fi
@@ -105,6 +110,21 @@ installDotfiles() {
   if [[ -d $NANORC ]]; then
     sudo rm -rf $NANORC
   fi
+}
+
+installDotfiles() {
+  echo
+  echo
+  echo "[INFO] Setting up dotfiles....."
+  echo
+  echo
+
+  installPackage
+  userSettings $USER # SSH KEY | SUDO without pass | Permission
+  installEXA
+  installSpeedTest
+  setupLocale
+  cleanUpDir # Remove directories if exist
 
   # ZSH
   sudo usermod -s /usr/bin/zsh $(whoami)

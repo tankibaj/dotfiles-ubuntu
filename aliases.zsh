@@ -21,6 +21,24 @@ if [ -f /usr/bin/systemctl ]; then
     alias ctlisfailed='sudo systemctl is-failed' # Check whether units are failed
 fi
 
+#=========================================================================
+#      ---------------| List & Size |---------------
+#=========================================================================
+if [ -x "$(command -v exa)" ]; then
+    alias ls='exa --long --group --icons --binary'
+    alias ls.='exa --long --group --icons --binary --all'
+    alias tree='exa --tree --icons'
+    alias tree.='exa --tree --icons --all'
+else
+    alias ls='ls -lhF'
+    alias ls.='ls -lhFa'
+    alias tree='tree'
+fi
+alias tree-="tree"
+alias size="du -sh"
+#[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]
+
+
 # Prompt confirmation and explain what is being done
 alias rm='rm -iv'
 alias mv='mv -iv'
