@@ -81,7 +81,31 @@ plugins=(
     zsh-autosuggestions
     zsh-syntax-highlighting
     cp
+    iterm2
     git
+    github
+    gitignore
+    brew
+    aws
+    kubectl
+    helm
+    laravel
+    microk8s
+    minikube
+    docker-compose
+    docker
+    docker-machine
+    vagrant
+    vault
+    vscode
+    terraform
+    ansible
+    python
+    npm
+    copydir
+    copyfile
+    history
+    alias-finder
     )
 
 ZSH_DISABLE_COMPFIX="true"
