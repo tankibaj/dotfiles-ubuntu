@@ -190,8 +190,7 @@ vDestroy() {
     sudo virsh shutdown $1
     sudo virsh destroy $1
     sudo virsh undefine $1
-    sudo virsh pool-destroy $1
-    sudo rm -rfv /var/lib/libvirt/images/$1.qcow2
+    sudo rm -rfv /var/lib/libvirt/pool/default/$1.qcow2
     if [ -f /var/lib/libvirt/images/$1-seed.qcow2 ]; then
         sudo rm -rfv /var/lib/libvirt/images/$1-seed.qcow2
     fi
