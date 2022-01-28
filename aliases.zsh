@@ -280,3 +280,7 @@ extract() {
 whoisip() {
     curl -s http://ip-api.com/json/$1 | jq -r '.'
 }
+
+# Cloud-init
+alias cloud-init-output='less +F /var/log/cloud-init-output.log'
+alias cloud-init-status='sudo cloud-init status --wait --long'
