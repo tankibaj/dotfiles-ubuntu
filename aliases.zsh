@@ -146,6 +146,7 @@ alias site-available='cd /etc/nginx/sites-available/'
 alias site-enabled='cd /etc/nginx/sites-enabled/'
 
 # Docker
+alias dcls='docker container list --all --format "table {{.ID}}\t{{.Image}}\t{{.Names}}\t{{.Status}}\t{{.Ports}}"'
 alias dpsa='docker ps -a'
 alias dps='docker ps'
 alias dstart='docker start'
