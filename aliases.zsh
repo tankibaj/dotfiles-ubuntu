@@ -146,7 +146,7 @@ alias site-available='cd /etc/nginx/sites-available/'
 alias site-enabled='cd /etc/nginx/sites-enabled/'
 
 # Docker
-alias dcls='docker container list --all --format "table {{.ID}}\t{{.Image}}\t{{.Names}}\t{{.Status}}\t{{.Ports}}"'
+alias dls='docker container list --all --format "table {{.ID}}\t{{.Image}}\t{{.Names}}\t{{.Status}}\t{{.Ports}}"'
 alias dpsa='docker ps -a'
 alias dps='docker ps'
 alias dstart='docker start'
@@ -285,3 +285,17 @@ whoisip() {
 # Cloud-init
 alias cloud-init-output='less +F /var/log/cloud-init-output.log'
 alias cloud-init-status='sudo cloud-init status --wait --long'
+
+
+
+
+# Func
+listening() {
+    if [ $# -eq 0 ]; then
+        sudo lsof -i -P | grep LISTEN
+    elif [ $# -eq 1 ]; then
+        sudo lsof -i -P | grep LISTEN | grep -i --color=auto $1
+    else
+        echo "Usage: listening [port/appname]"
+    fi
+}
