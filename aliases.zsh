@@ -74,39 +74,7 @@ ips() {
     fi
 }
 
-gettingStarted() {
-    if [ -e GettingStarted.txt ]; then
-        egrep '^\s+\$' GettingStarted.txt | sed -e 's@\$@@'
-    else
-        echo 'GettingStarted does not exist!!'
-    fi
-}
 
-codeBlock() {
-    if [ -e README.md ]; then
-        sed -n '/^```/,/^```/ p' <README.md | sed '/^```/ d'
-    else
-        echo 'README does not exist!!'
-    fi
-}
-
-codeBlockBash() {
-    if [ -e README.md ]; then
-        sed -n '/^```bash/,/^```/ p' <README.md | sed '/^```/ d'
-    else
-        echo 'README does not exist!!'
-    fi
-}
-
-# See all paths, one element per line.
-# If an argument is supplied, grep fot it.
-PATH() {
-    test -n "$1" && {
-        echo $PATH | perl -p -e "s/:/\n/g;" | grep -i "$1"
-    } || {
-        echo $PATH | perl -p -e "s/:/\n/g;"
-    }
-}
 
 # Path
 #alias init='git init'
@@ -288,7 +256,6 @@ alias cloud-init-status='sudo cloud-init status --wait --long'
 
 
 
-
 # Func
 listening() {
     if [ $# -eq 0 ]; then
@@ -298,4 +265,39 @@ listening() {
     else
         echo "Usage: listening [port/appname]"
     fi
+}
+
+#=========================================================================
+#      ---------------| SSH |---------------
+#=========================================================================
+alias sshconfig="vim ~/.ssh/config"
+alias sshclr='ssh-keygen -R'
+alias sshls="grep '^Host' $HOME/.ssh/config | sed 's/Host //' | sort -u"
+
+sshid() {
+  cat ~/.ssh/$1.pub | pbcopy && echo "$1 public was copied to clipboard"
+}
+
+ssh-id-ls() {
+  for file in ~/.ssh/*.pub; do
+    printf "%s %s\n" "$(ssh-keygen -lf "$file" | awk '{$1=""}1')" "$file"
+  done | column -t | grep --color=auto "$line" || echo "$line"
+}
+
+ssh-add-ls() {
+  while read -r line; do
+    for file in ~/.ssh/*.pub; do
+      printf "%s %s\n" "$(ssh-keygen -lf "$file" | awk '{$1=""}1')" "$file"
+    done | column -t | grep --color=auto "$line" || echo "$line"
+  done < <(ssh-add -l | awk '{print $2}')
+}
+#[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]
+
+# See all paths, one element per line. If an argument is supplied, grep fot it.
+pathls() {
+  test -n "$1" && {
+    echo $PATH | perl -p -e "s/:/\n/g;" | grep -i "$1"
+  } || {
+    echo $PATH | perl -p -e "s/:/\n/g;"
+  }
 }
