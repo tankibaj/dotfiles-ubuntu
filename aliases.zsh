@@ -44,6 +44,13 @@ alias rm='rm -iv'
 alias mv='mv -iv'
 alias cp='cp -iv'
 alias ln='ln -iv'
+rcp() {
+  if [[ $# -eq 2 ]]; then
+    rsync -avzh --stats --progress $1 $2
+  else
+    echo "Usage: rcp <source> <destination>"
+  fi
+}
 
 # Basic
 alias dotfiles='cd ~/.dotfiles'
