@@ -122,8 +122,7 @@ alias site-enabled='cd /etc/nginx/sites-enabled/'
 
 # Docker
 alias dls='docker container list --all --format "table {{.ID}}\t{{.Image}}\t{{.Names}}\t{{.Status}}\t{{.Ports}}"'
-alias dpsa='docker ps -a'
-alias dps='docker ps'
+alias dps="docker ps --all --format 'table {{.ID}}\t{{.Image}}\t{{.Status}}\t{{.Names}}\t{{.Ports}}'"
 alias dstart='docker start'
 alias dsa='docker ps -aq | xargs docker stop'
 alias dstop='docker stop'
