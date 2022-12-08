@@ -1,6 +1,7 @@
 # ⚠️  DEPRECATED
 
-Further development has moved to [tankibaj/dotfiles](https://github.com/tankibaj/dotfiles).
+> Further development has moved to [tankibaj/dotfiles](https://github.com/tankibaj/dotfiles).
+
 
 
 
